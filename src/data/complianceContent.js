@@ -2149,6 +2149,449 @@ Section 5: Additional Information
       <p>CCPA/CPRA has inspired similar laws in <strong>Virginia (VCDPA), Colorado (CPA), Connecticut (CTDPA), Utah (UCPA), Texas (TDPSA)</strong>, and others. Building a robust privacy program for CCPA often achieves significant compliance with these other state laws as well. Track the <strong>IAPP State Privacy Law Tracker</strong> for current status.</p>
     </div>
   `,
+  // HITRUST chapters
+  v2c41: `
+    <h3>HITRUST Overview</h3>
+    <p>
+      The <strong>Health Information Trust Alliance (HITRUST)</strong> Common Security Framework (CSF) is a certifiable framework that provides organizations with a comprehensive, flexible, and efficient approach to managing <strong>information risk, security, and compliance</strong> across healthcare and other industries handling sensitive data.
+    </p>
+
+    <h4>What is HITRUST?</h4>
+    <p>HITRUST is both a framework and a certification body. It maintains the HITRUST CSF, a <strong>prescriptive and certifiable</strong> security framework that:</p>
+    <ul>
+      <li>Integrates, harmonizes, and cross-references multiple standards and regulations including <strong>HIPAA, NIST, ISO 27001, SOC 2, PCI DSS, HITECH,</strong> and <strong>FTC</strong></li>
+      <li>Provides a <strong>single, actionable</strong> set of security controls organized by risk and maturity</li>
+      <li>Delivers <strong>scalable certifications</strong> tailored to an organization's size, complexity, and risk profile</li>
+      <li>Reduces assessment burden by serving as a <strong>"compliance harmonizer"</strong> that satisfies multiple regulatory requirements simultaneously</li>
+    </ul>
+
+    <div class="key-box">
+      <div class="key-title">🔑 Key Concept: Why HITRUST Matters</div>
+      <p>HITRUST certification has become the <strong>de facto standard</strong> for demonstrating healthcare cybersecurity maturity. Unlike HIPAA which sets requirements without a specific assessment methodology, HITRUST provides a <strong>rigorous, scored, and independently validated</strong> assessment process that payers, providers, and business associates increasingly demand.</p>
+    </div>
+
+    <h4>Who Needs HITRUST?</h4>
+    <table>
+      <thead>
+        <tr><th>Organization Type</th><th>Why HITRUST?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Healthcare Providers</strong></td><td>Protect PHI, satisfy HIPAA requirements, qualify as business partners</td></tr>
+        <tr><td><strong>Health Payers (Insurers)</strong></td><td>Demonstrate security posture to regulators and partners</td></tr>
+        <tr><td><strong>Technology Vendors</strong></td><td>Meet partner/contract requirements for handling healthcare data</td></tr>
+        <tr><td><strong>Health Tech Startups</strong></td><td>Accelerate sales cycles by proving security maturity</td></tr>
+        <tr><td><strong>Business Associates</strong></td><td>Third-party assurance for covered entities</td></tr>
+        <tr><td><strong>Financial Services</strong></td><td>Cross-industry risk management (CSF is sector-agnostic)</td></tr>
+      </tbody>
+    </table>
+
+    <h4>HITRUST CSF Structure</h4>
+    <p>The HITRUST CSF organizes 14 control categories containing <strong>135+ specific control objectives</strong> across multiple compliance domains:</p>
+    <table>
+      <thead>
+        <tr><th>Control Category</th><th>Focus</th><th>Approx. Controls</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Information Protection Management</strong></td><td>Information lifecycle, classification, and management</td><td>20+</td></tr>
+        <tr><td><strong>Endpoint Protection</strong></td><td>Device security, malware prevention, mobile device management</td><td>13+</td></tr>
+        <tr><td><strong>Portable Media Security</strong></td><td>Removable media, encryption, data transport</td><td>5+</td></tr>
+        <tr><td><strong>Mobile Device Security</strong></td><td>BYOD, MDM, containerization</td><td>7+</td></tr>
+        <tr><td><strong>Wireless Security</strong></td><td>Wi-Fi, Bluetooth, NFC security</td><td>6+</td></tr>
+        <tr><td><strong>Configuration Management</strong></td><td>Baseline configurations, change management</td><td>8+</td></tr>
+        <tr><td><strong>Vulnerability Management</strong></td><td>Scanning, patching, remediation</td><td>10+</td></tr>
+        <tr><td><strong>Network Protection</strong></td><td>Network architecture, segmentation, monitoring</td><td>18+</td></tr>
+        <tr><td><strong>Transmission Protection</strong></td><td>Encryption in transit, secure protocols</td><td>10+</td></tr>
+        <tr><td><strong>Password Management</strong></td><td>Authentication controls, credential policies</td><td>9+</td></tr>
+        <tr><td><strong>Access Control</strong></td><td>Identity management, authorization, privileged access</td><td>12+</td></tr>
+        <tr><td><strong>Audit Logging & Monitoring</strong></td><td>Log management, SIEM, anomaly detection</td><td>12+</td></tr>
+        <tr><td><strong>Education, Training & Awareness</strong></td><td>Security training, phishing awareness</td><td>6+</td></tr>
+        <tr><td><strong>Third-Party Assurance</strong></td><td>Vendor management, supply chain security</td><td>10+</td></tr>
+        <tr><td><strong>Incident Management</strong></td><td>IR planning, response, forensics, notification</td><td>14+</td></tr>
+        <tr><td><strong>Business Continuity & Disaster Recovery</strong></td><td>BCP, DRP, backup, RTO/RPO</td><td>10+</td></tr>
+        <tr><td><strong>Risk Management</strong></td><td>Risk assessment, treatment, monitoring</td><td>8+</td></tr>
+        <tr><td><strong>Physical & Environmental Security</strong></td><td>Facility access, environmental controls</td><td>13+</td></tr>
+        <tr><td><strong>Data Protection & Privacy</strong></td><td>Encryption, DLP, privacy controls</td><td>15+</td></tr>
+      </tbody>
+    </table>
+
+    <h4>HITRUST Assessment Tiers</h4>
+    <p>HITRUST offers scalable assessment options based on organizational maturity and risk:</p>
+    <ul>
+      <li><strong>e1 (Essentials 1):</strong> Entry-level — 1-year certification using the HITRUST MyCSF tool for small to mid-size organizations</li>
+      <li><strong>i1 (Implemented 1):</strong> Validated — 1-year certification confirming 75+ controls are implemented</li>
+      <li><strong>r2 (Risk-based, Validated):</strong> The gold standard — 2-year certification with a comprehensive risk-based assessment covering all 14 categories, scored and validated by a HITRUST-approved assessor</li>
+    </ul>
+  `,
+  v2c42: `
+    <h3>r2R Validated Assessment</h3>
+    <p>
+      The <strong>HITRUST r2 Validated Assessment</strong> is the most comprehensive and widely recognized HITRUST certification. It involves a rigorous, risk-based evaluation performed by a <strong>HITRUST-approved external assessor</strong> that validates an organization's security controls against the full HITRUST CSF.
+    </p>
+
+    <div class="warning-box">
+      <div class="warning-title">⚠️ "r2R" vs "r2"</div>
+      <p>The designation <strong>"r2"</strong> refers to the HITRUST assessment methodology version. It is sometimes referenced as <strong>r2 Validated</strong> or <strong>HITRUST CSF Certified</strong>. The "R" in r2R also appears in documentation and denotes the <strong>risk-based</strong> approach. All refer to the same current assessment standard.</p>
+    </div>
+
+    <h4>Assessment Phases</h4>
+    <ol>
+      <li>
+        <strong>Readiness Assessment (Self-Assessment)</strong>
+        <ul>
+          <li>Organization completes a <strong>self-assessment</strong> using the HITRUST MyCSF Connect platform</li>
+          <li>Maps existing controls to HITRUST CSF requirements</li>
+          <li>Identifies gaps and prioritizes remediation efforts</li>
+          <li>Generates a <strong>Readiness Score</strong> indicating preparation level</li>
+          <li>Typical duration: <strong>2-4 months</strong></li>
+        </ul>
+      </li>
+      <li>
+        <strong>Remediation & Evidence Preparation</strong>
+        <ul>
+          <li>Address identified gaps from the readiness assessment</li>
+          <li>Collect and organize <strong>evidence artifacts</strong> for each control:</li>
+          <ul>
+            <li>Policy and procedure documents</li>
+            <li>System configurations and screenshots</li>
+            <li>Audit logs and monitoring reports</li>
+            <li>Interview transcripts with key personnel</li>
+            <li>Automated scan results and penetration test reports</li>
+          </ul>
+          <li>Prepare the <strong>Corrective Action Plan (CAP)</strong> for open findings</li>
+          <li>Typical duration: <strong>3-6 months</strong></li>
+        </ul>
+      </li>
+      <li>
+        <strong>Validated Assessment (On-site / Remote)</strong>
+        <ul>
+          <li>Conducted by a <strong>HITRUST-Certified Assessor (HCA)</strong> from an approved assessor organization</li>
+          <li>Three assessment methodologies combined:</li>
+          <ul>
+            <li><strong>Maturity Scoring:</strong> Evaluates policies, procedures, and management practices</li>
+            <li><strong>Control Scoring:</strong> Tests the implementation and effectiveness of technical controls</li>
+            <li><strong>Residual Risk Scoring:</strong> Assesses the organization's acceptable risk level</li>
+          </ul>
+          <li>Includes document review, interviews, technical testing, and observation</li>
+          <li>Typical duration: <strong>4-8 weeks</strong></li>
+        </ul>
+      </li>
+      <li>
+        <strong>Quality Assurance & Certification</strong>
+        <ul>
+          <li>HITRUST performs <strong>QA review</strong> of assessment results</li>
+          <li>Issues a <strong>HITRUST CSF Certified</strong> report with an overall score</li>
+          <li>Certification valid for <strong>2 years</strong> with annual surveillance</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h4>Scoring & Ratings</h4>
+    <p>Each control is scored on multiple dimensions:</p>
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>What It Measures</th><th>Scale</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Maturity</strong></td><td>Defined policies, formal procedures, management oversight (Inspired by CMMI)</td><td>0-10 (P0-P10)</td></tr>
+        <tr><td><strong>Implementation</strong></td><td>Whether the control objective is actually implemented and effective</td><td>Fully / Partially / Not Implemented</td></tr>
+        <tr><td><strong>Effectiveness</strong></td><td>Whether the implemented control achieves its intended outcome</td><td>Fully / Partially / Not Effective</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <div class="info-title">💡 Understanding HITRUST Scores</div>
+      <p>The overall eMAP score (e1, i1, or r2) reflects your <strong>assessed compliance posture</strong>. Organizations aim for a <strong>Moderate Assurance</strong> rating as a baseline, with many enterprise healthcare contracts requiring it. Higher risk environments may demand <strong>High Assurance</strong>.</p>
+    </div>
+
+    <h4>Cost & Timeline Expectations</h4>
+    <table>
+      <thead>
+        <tr><th>Factor</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Timeline</strong></td><td>6-12 months from initiation to certification</td></tr>
+        <tr><td><strong>Direct costs</strong></td><td>$50,000-$150,000+ depending on scope and assessor</td></tr>
+        <tr><td><strong>Annual maintenance</strong></td><td>$20,000-$75,000 for surveillance and continuous monitoring</td></tr>
+        <tr><td><strong>Internal resources</strong></td><td>1-3 FTEs dedicated for 6-12 months (DPO, CISO, Security Engineers)</td></tr>
+      </tbody>
+    </table>
+  `,
+  v2c43: `
+    <h3>CSF Certification</h3>
+    <p>
+      HITRUST <strong>CSF Certification</strong> is the formal credential demonstrating that an organization has been <strong>independently assessed</strong> and found to meet the HITRUST Common Security Framework requirements. It is the most widely recognized healthcare security certification in the United States and increasingly required by insurance payers, healthcare partners, and regulatory bodies.
+    </p>
+
+    <h4>Certification Levels</h4>
+    <p>HITRUST offers a progression of certifications that reflect increasing levels of rigor:</p>
+    <table>
+      <thead>
+        <tr><th>Certification</th><th>Assurance Level</th><th>Validity</th><th>Scope</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>e1 (MyCSF Assessed)</strong></td><td>Foundational</td><td>1 year</td><td>Self-guided essentials assessment for SMBs</td></tr>
+        <tr><td><strong>i1 (MyCSF Assured)</strong></td><td>Implemented</td><td>1 year</td><td>Validated implementation of 75+ essential controls</td></tr>
+        <tr><td><strong>r2 (Risk-based, Validated)</strong></td><td>Moderate to High</td><td>2 years</td><td>Full CSF assessment with risk-based scoping</td></tr>
+      </tbody>
+    </table>
+
+    <h4>The Certification Process</h4>
+    <ol>
+      <li>
+        <strong>Scope Definition</strong>
+        <p>Define the boundaries of the assessment — which systems, applications, locations, and business processes are in scope. HITRUST uses <strong>three scoping methodologies</strong>:</p>
+        <ul>
+          <li><strong>Organizational:</strong> Entire organization</li>
+          <li><strong>Business Unit:</strong> Specific division or subsidiary</li>
+          <li><strong>Application:</strong> Specific applications or product lines</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Control Selection & Prioritization</strong>
+        <p>Not all 135+ controls apply equally. HITRUST uses a <strong>risk-based approach</strong> where controls are weighted based on:</p>
+        <ul>
+          <li>Information sensitivity (PHI, PII, financial data)</li>
+          <li>System exposure (internet-facing vs. internal)</li>
+          <li>Threat environment and industry risk</li>
+          <li>Regulatory requirements</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Assessment Execution</strong>
+        <p>As described in the r2R module, the assessor evaluates maturity, implementation, and effectiveness across all selected controls.</p>
+      </li>
+      <li>
+        <strong>Remediation of Findings</strong>
+        <p>Address all findings rated <strong>Critical or High</strong> before certification. Medium and Low findings may be accepted with a corrective action plan.</p>
+      </li>
+      <li>
+        <strong>Report Issuance</strong>
+        <p>Upon successful completion, HITRUST issues:</p>
+        <ul>
+          <li><strong>HITRUST CSF Quality Management Plan</strong> — Assessment methodology documentation</li>
+          <li><strong>HITRUST CSF Report on Certification</strong> — Overall score and certification status</li>
+          <li><strong>Corrective Action Plan (CAP)</strong> — For any open findings</li>
+          <li><strong>HITRUST Assessment Letter</strong> — Summary of scope and results</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h4>Maintaining Certification</h4>
+    <ul>
+      <li><strong>Annual Surveillance:</strong> Shorter re-assessment to verify ongoing compliance (typically 40% of original assessment scope)</li>
+      <li><strong>Continuous Monitoring:</strong> HITRUST Connect platform for real-time compliance tracking</li>
+      <li><strong>eMAPP (MyCSF Assurance, Privacy, and Protection):</strong> Ongoing monitoring and scoring tool</li>
+      <li><strong>Re-certification:</strong> Full re-assessment every <strong>2 years</strong> for r2 certification</li>
+    </ul>
+
+    <div class="key-box">
+      <div class="key-title">🔑 Key Concept: eMAPP Dashboard</div>
+      <p>HITRUST eMAPP provides a <strong>visual compliance dashboard</strong> showing your organization's current posture across all CSF categories. It integrates with continuous monitoring tools to dynamically update scores as remediations are completed or new risks are identified. Organizations share eMAPP results with partners as <strong>evidence of compliance</strong> without requiring full re-assessments.</p>
+    </div>
+
+    <h4>Benefits of HITRUST Certification</h4>
+    <ul>
+      <li><strong>Industry Recognition:</strong> The most widely accepted healthcare security certification</li>
+      <li><strong>Multi-Framework Compliance:</strong> Satisfies HIPAA, NIST, ISO 27001, SOC 2, PCI DSS, and others simultaneously</li>
+      <li><strong>Reduced Assessment Fatigue:</strong> Partners accept your HITRUST cert instead of sending their own questionnaires</li>
+      <li><strong>Competitive Advantage:</strong> Many health systems and payers require HITRUST certification for vendor onboarding</li>
+      <li><strong>Risk-Based Focus:</strong> Concentrates resources on the highest-impact controls</li>
+      <li><strong>Continuous Improvement:</strong> Built-in mechanisms for ongoing security enhancement</li>
+    </ul>
+  `,
+  v2c44: `
+    <h3>Third-Party Assurance</h3>
+    <p>
+      <strong>Third-Party Assurance (TPA)</strong> is a critical component of the HITRUST framework that extends security requirements beyond organizational boundaries to <strong>vendors, business associates, and supply chain partners</strong>. In healthcare, where PHI flows through complex ecosystems of providers, payers, technology vendors, and business associates, third-party risk management is essential.
+    </p>
+
+    <h4>Why Third-Party Assurance Matters</h4>
+    <div class="warning-box">
+      <div class="warning-title">⚠️ The Third-Party Risk Reality</div>
+      <p>According to industry reports, <strong>60% of data breaches</strong> originate from third parties. In healthcare, business associates and vendors handling PHI represent one of the largest attack surfaces. The 2015 Anthem breach affected 78.8 million records and originated from a phishing attack on a subsidiary. HITRUST's TPA program provides a <strong>standardized framework</strong> to assess and monitor vendor security posture.</p>
+    </div>
+
+    <h4>HITRUST TPA Program</h4>
+    <p>The HITRUST Third-Party Assurance program provides a structured approach to managing vendor security risk:</p>
+    <table>
+      <thead>
+        <tr><th>Component</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>HITRUST Assessment Requirements</strong></td><td>Organizations can require vendors to maintain HITRUST certification (e1, i1, or r2) as a condition of doing business</td></tr>
+        <tr><td><strong>Shared Responsibility Model</strong></td><td>Clearly defines which security obligations belong to the covered entity vs. the business associate</td></tr>
+        <tr><td><strong>TPA Scoping Questionnaire</strong></td><td>A standardized questionnaire to gather vendor security information before full assessment</td></tr>
+        <tr><td><strong>Assessment Validation</strong></td><td>Verify that vendor assessments were conducted by qualified HITRUST assessors</td></tr>
+        <tr><td><strong>Continuous Monitoring</strong></td><td>Ongoing verification of vendor compliance through eMAPP and Connect platform</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Vendor Risk Assessment Process</h4>
+    <ol>
+      <li>
+        <strong>Vendor Inventory & Classification</strong>
+        <ul>
+          <li>Identify all vendors that handle PHI, ePHI, or sensitive data</li>
+          <li>Classify vendors by risk level based on data access scope, system connectivity, and criticality</li>
+          <li>Maintain a <strong>Vendor Management System (VMS)</strong> with current risk ratings</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Due Diligence</strong>
+        <ul>
+          <li>Review vendor's HITRUST certification status (check <strong>HITRUST Connect</strong> for validity)</li>
+          <li>Evaluate vendor's SOC 2 Type II reports if available</li>
+          <li>Assess vendor's incident history and breach notifications</li>
+          <li>Review <strong>Business Associate Agreement (BAA)</strong> terms</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Risk Assessment</strong>
+        <ul>
+          <li>Conduct risk scoring based on data sensitivity, access level, and vendor security posture</li>
+          <li>Map vendor controls to HITRUST CSF requirements</li>
+          <li>Identify gaps between vendor controls and organizational requirements</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Ongoing Monitoring</strong>
+        <ul>
+          <li>Require vendors to share <strong>HITRUST eMAPP</strong> results periodically</li>
+          <li>Monitor vendor security ratings through platforms like SecurityScorecard or BitSight</li>
+          <li>Conduct <strong>annual vendor reviews</strong> and update risk scores</li>
+          <li>Track vendor incident notifications and breach disclosures</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Remediation & Offboarding</strong>
+        <ul>
+          <li>Establish <strong>SLAs for remediation</strong> of identified vendor vulnerabilities</li>
+          <li>Escalation procedures for critical findings</li>
+          <li>Termination procedures for non-compliant vendors</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h4>Business Associate Agreement (BAA) Requirements</h4>
+    <p>Under HIPAA and HITRUST requirements, BAAs must include:</p>
+    <ul>
+      <li>Permitted and required uses/disclosures of PHI</li>
+      <li>Safeguards the associate must implement (including administrative, physical, and technical controls)</li>
+      <li>Reporting obligations for breaches and security incidents</li>
+      <li>Subcontractor requirements (<strong>downstream BAAs</strong>)</li>
+      <li>Individual access rights and amendment provisions</li>
+      <li>Accounting of disclosures</li>
+      <li>Return or destruction of PHI upon termination</li>
+      <li>Termination provisions for material breach</li>
+    </ul>
+
+    <div class="info-box">
+      <div class="info-title">💡 Pro Tip: TPA Automation</div>
+      <p>Leverage platforms like <strong>HITRUST Connect</strong>, <strong>Vanta</strong>, <strong>Drata</strong>, or <strong>Secureframe</strong> to automate third-party risk assessments. These platforms integrate with vendor security posture management to provide <strong>continuous, real-time visibility</strong> into vendor compliance — reducing the manual burden of annual questionnaires.</p>
+    </div>
+  `,
+  v2c45: `
+    <h3>Continuous Monitoring</h3>
+    <p>
+      <strong>HITRUST Continuous Monitoring</strong> ensures that security controls maintain their effectiveness <strong>between formal assessment cycles</strong>. Rather than treating compliance as an annual event, continuous monitoring provides <strong>real-time visibility</strong> into the organization's security posture and enables rapid response to emerging threats and control drift.
+    </p>
+
+    <div class="key-box">
+      <div class="key-title">🔑 Key Concept: The 365-Day Security Posture</div>
+      <p>HITRUST emphasizes that <strong>certification is a point-in-time achievement</strong>, but security must be maintained every day. Continuous monitoring bridges the gap between assessments by tracking security controls, detecting drift, and providing early warning of compliance violations — ensuring your <strong>Day 366 posture is as strong as Day 1</strong>.</p>
+    </div>
+
+    <h4>HITRUST Continuous Monitoring Framework</h4>
+    <p>The HITRUST approach to continuous monitoring involves three key components:</p>
+    <table>
+      <thead>
+        <tr><th>Component</th><th>Function</th><th>Frequency</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Automated Control Monitoring</strong></td><td>Technical controls validation through automated tools and integrations</td><td>Real-time / Daily</td></tr>
+        <tr><td><strong>Risk Intelligence</strong></td><td>Threat landscape analysis, vulnerability management, and environmental scanning</td><td>Weekly / Monthly</td></tr>
+        <tr><td><strong>Management Review</strong></td><td>Leadership review of security posture, metrics, and strategic alignment</td><td>Quarterly</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Automated Monitoring Tools & Integrations</h4>
+    <p>Effective continuous monitoring requires integration across your entire security stack:</p>
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Tools/Examples</th><th>HITRUST Controls Addressed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Vulnerability Scanning</strong></td><td>Qualys, Nessus, Tenable.io, Qualys VMDR</td><td>09.fI — Vulnerability Management</td></tr>
+        <tr><td><strong>SIEM & Log Management</strong></td><td>Splunk, Microsoft Sentinel, IBM QRadar, Elastic SIEM</td><td>06.d — Audit Logging & Monitoring</td></tr>
+        <tr><td><strong>Endpoint Detection & Response</strong></td><td>CrowdStrike, SentinelOne, Microsoft Defender for Endpoint</td><td>09.d — Endpoint Protection</td></tr>
+        <tr><td><strong>Identity & Access Monitoring</strong></td><td>Azure AD/Entra ID, Okta, CyberArk</td><td>09.a — Access Control</td></tr>
+        <tr><td><strong>Cloud Security Posture</strong></td><td>Wiz, Prisma Cloud, AWS Security Hub, Azure Defender</td><td>01 — Information Protection</td></tr>
+        <tr><td><strong>Data Loss Prevention</strong></td><td>Microsoft Purview, Symantec DLP, Digital Guardian</td><td>09.n — Data Protection</td></tr>
+        <tr><td><strong>Configuration Management</strong></td><td>Chef InSpec, Puppet, Ansible, Microsoft Defender for Cloud</td><td>01.0 — Configuration Management</td></tr>
+      </tbody>
+    </table>
+
+    <h4>HITRUST eMAPP (MyCSF Assurance, Privacy, and Protection)</h4>
+    <p><strong>eMAPP</strong> is HITRUST's online platform for managing continuous compliance:</p>
+    <ul>
+      <li><strong>Real-time scoring:</strong> Dynamic compliance scores that update as remediations are completed</li>
+      <li><strong>Progress tracking:</strong> Visual dashboards showing implementation progress across all CSF objectives</li>
+      <li><strong>Evidence management:</strong> Centralized repository for compliance evidence and documentation</li>
+      <li><strong>Shareable reports:</strong> Generate compliance packages for partners, regulators, and customers</li>
+      <li><strong>Risk quantification:</strong> Maps controls to risk levels, enabling prioritization of remediation efforts</li>
+      <li><strong>Integration APIs:</strong> Connect with SIEM, GRC, and ITSM platforms for automated data feeds</li>
+    </ul>
+
+    <h4>Key Metrics for Continuous Monitoring</h4>
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Description</th><th>Target</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Mean Time to Remediate (MTTR)</strong></td><td>Average time to fix a security finding</td><td>&lt;30 days (Critical), &lt;90 days (High)</td></tr>
+        <tr><td><strong>Control Effectiveness Rate</strong></td><td>Percentage of controls operating as intended</td><td>≥ 95%</td></tr>
+        <tr><td><strong>Vulnerability Open Rate</strong></td><td>Percentage of known vulnerabilities still open</td><td>&lt; 5%</td></tr>
+        <tr><td><strong>Compliance Score</strong></td><td>HITRUST eMAPP overall score</td><td>≥ Moderate Assurance</td></tr>
+        <tr><td><strong>Incident Response Time</strong></td><td>Time from detection to containment</td><td>&lt;4 hours</td></tr>
+        <tr><td><strong>Training Completion Rate</strong></td><td>Percentage of staff completing security awareness training</td><td>≥ 98%</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Alert Escalation Matrix</h4>
+    <p>Define clear escalation procedures for monitoring alerts:</p>
+    <table>
+      <thead>
+        <tr><th>Severity</th><th>Response Time</th><th>Responsible Team</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Critical</strong></td><td>Immediate (≤15 min)</td><td>SOC / Incident Response</td><td>Isolate affected systems, initiate IR plan, notify CISO</td></tr>
+        <tr><td><strong>High</strong></td><td>Within 1 hour</td><td>Security Engineering</td><td>Investigate, apply mitigation, assess impact</td></tr>
+        <tr><td><strong>Medium</strong></td><td>Within 4 hours</td><td>Security Operations</td><td>Analyze, schedule remediation, update risk register</td></tr>
+        <tr><td><strong>Low</strong></td><td>Within 24 hours</td><td>Security Analysts</td><td>Log, review during next business cycle</td></tr>
+        <tr><td><strong>Informational</strong></td><td>Next business day</td><td>Compliance Team</td><td>Document, review trends, update controls if needed</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Annual Surveillance Assessment</h4>
+    <p>In addition to continuous monitoring, HITRUST requires an <strong>annual surveillance assessment</strong> to maintain r2 certification:</p>
+    <ul>
+      <li>Covers approximately <strong>40% of the original assessment scope</strong> (rotating focus areas)</li>
+      <li>Reviews <strong>all critical and high-severity findings</strong> from the previous assessment</li>
+      <li>Evaluates <strong>remediation progress</strong> on open corrective action items</li>
+      <li>Assesses <strong>changes in threat landscape</strong> and regulatory environment</li>
+      <li>Verifies <strong>ongoing management commitment</strong> to the security program</li>
+    </ul>
+
+    <div class="warning-box">
+      <div class="warning-title">⚠️ Common Continuous Monitoring Pitfalls</div>
+      <ul>
+        <li><strong>Alert fatigue:</strong> Tuning out real threats due to excessive false positives — implement proper alert correlation and tuning</li>
+        <li><strong>Tool sprawl:</strong> Deploying multiple tools without integration — prioritize <strong>tool consolidation</strong> and data correlation</li>
+        <li><strong>Evidence gaps:</strong> Failing to maintain audit-ready evidence continuously — automate evidence collection where possible</li>
+        <li><strong>Stale risk assessments:</strong> Not updating risk profiles as the threat landscape evolves — conduct <strong>quarterly risk reviews</strong></li>
+      </ul>
+    </div>
+  `,
   // CMMC chapters
   v2c46: `
     <h3>CMMC Overview</h3>

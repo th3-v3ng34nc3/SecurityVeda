@@ -1,53 +1,70 @@
-# Security Veda
+# The Security Vedas
 
-Security Veda is a lightweight web‑application that provides a curated collection of security‑related knowledge, best‑practice checklists, and compliance references.  The project is organized around **Vedas**—thematic groups of security concepts (e.g., *Authentication*, *Network*, *Data Protection*).  Each Veda contains a set of articles, code snippets, and compliance content that can be browsed locally or hosted as a static site.
+A Sanskrit-themed cybersecurity knowledge base organized into six "Vedas" — Cloud Security, Compliance, AppSec, DevSecOps, Kubernetes & Containers, and Network Security. Each Veda contains sections and chapters covering practical security topics, from AWS IAM to OWASP Top 10 to Kubernetes pod security.
+
+Live at: [https://th3-v3ng34nc3.github.io/SecurityVeda/](https://th3-v3ng34nc3.github.io/SecurityVeda/)
 
 ## Features
-- **Structured knowledge base** – Content lives in `src/data` as plain JavaScript objects that are easy to extend.
-- **Search & filter** – Users can quickly find relevant sections via the built‑in search component.
-- **Responsive UI** – Built with React and Tailwind CSS for a clean, mobile‑friendly experience.
-- **Open source** – Licensed under MIT, ready to fork and customize.
 
-## Getting Started
+- 6 domains, dozens of sections, hundreds of chapters
+- Local progress tracking — mark chapters as you read; progress survives reloads
+- Per-Veda and Grand Master certificates with a unique UUID, your name, and GitHub / LinkedIn handles printed on the cert
+- Optional public registry (Formspree-backed) for anyone who wants to share their completion
+- Light / dark mode with a glass-morphism look
+- Global search (Ctrl/Cmd+K)
+- No backend — everything runs in the browser, persistence via `localStorage`
+
+## Tech Stack
+
+- React 18 + Vite
+- Plain CSS (no framework)
+- Deployed as a static site to GitHub Pages via GitHub Actions
+
+## Local Development
+
 ```bash
-# Clone the repository (once it is on GitHub)
-git clone https://github.com/<your‑username>/security-veda.git
-cd security-veda
-
-# Install dependencies
 npm install
-
-# Run the development server
 npm run dev
 ```
-The app will be available at `http://localhost:3000`.
 
-## Deploying to GitHub Pages
-1. Build the static site:
-   ```bash
-   npm run build
-   ```
-2. Push the `dist` folder to the `gh-pages` branch:
-   ```bash
-   npm run deploy
-   ```
-   The `deploy` script (defined in `package.json`) uses `gh-pages` to publish the built site.
-3. On GitHub, go to **Settings → Pages**, select the `gh-pages` branch as the source, and save. Your site will be live at `https://<your‑username>.github.io/security-veda/`.
+Open [http://localhost:5173](http://localhost:5173).
 
-## Repository Structure
+## Build
+
+```bash
+npm run build      # outputs to ./dist
+npm run preview    # serve the production build locally
+```
+
+## Project Layout
+
 ```
 src/
-  ├─ components/        # React UI components
-  ├─ data/               # Knowledge content (Vedas, compliance data)
-  ├─ pages/              # Next.js page files
-  └─ utils/              # Helper functions
-public/                  # Static assets (icons, images)
-README.md                # This file
-.gitignore               # Git ignore rules
+├─ App.jsx                       # All UI: routing, modals, certificate generation, state
+├─ main.jsx                      # React entry point
+├─ index.css                     # Theme tokens, glass morphism, all styles
+└─ data/
+   ├─ vedasData.js               # Veda → Section → Chapter tree
+   ├─ cloudSecurityContent.js    # HTML content keyed by chapter ID
+   ├─ azureContent.js
+   ├─ gcpContent.js
+   ├─ complianceContent.js
+   ├─ appSecContent.js
+   ├─ devSecOpsContent.js
+   ├─ kubernetesContent.js
+   └─ networkSecurityContent.js
 ```
 
-## Contributing
-Contributions are welcome! Please fork the repo, create a feature branch, and open a pull request. Follow the existing code style and run tests with `npm test` before submitting.
+Adding a chapter: add an entry under the relevant section in `vedasData.js`, then add a matching `chapter.id → HTML string` entry in the corresponding content file.
+
+## Deployment
+
+Pushed to `main` → [`.github/workflows/main.yml`](.github/workflows/main.yml) runs `npm ci && npm run build` and publishes `dist/` to GitHub Pages. No manual deploy step.
+
+## Configuration
+
+- **Public registry**: paste your Formspree (or compatible JSON-accepting) endpoint into `REGISTRY_ENDPOINT` near the top of [`src/App.jsx`](src/App.jsx). Leave empty to hide the registry UI.
 
 ## License
-MIT © 2026 Security Veda contributors
+
+MIT © Aditya ([@th3-v3ng34nc3](https://github.com/th3-v3ng34nc3))

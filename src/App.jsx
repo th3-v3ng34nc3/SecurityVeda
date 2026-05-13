@@ -70,6 +70,153 @@ const CloseIcon = () => (
   </svg>
 )
 
+// Bundles every logo under src/logos/** at build time. Keys are paths like
+// './logos/cloudsecVeda/awscloud.png'; values are the hashed URLs Vite emits.
+const localLogos = import.meta.glob('./logos/**/*.{png,jpg,jpeg,webp,svg}', {
+  eager: true,
+  query: '?url',
+  import: 'default'
+})
+
+// Icon renderer: accepts an emoji, an HTTPS URL, or a local logo path
+// (e.g. "./logos/appsec/owasp_logo.png"). Falls back to a placeholder dot
+// if an image fails to load (network / missing file) so the UI degrades safely.
+function Icon({ value, fallback = '◉' }) {
+  const [failed, setFailed] = useState(false)
+  if (typeof value !== 'string') return <span aria-hidden="true">{value}</span>
+
+  // Local logo path bundled by Vite
+  if (value.startsWith('./logos/') || value.startsWith('/logos/')) {
+    const key = value.startsWith('/') ? '.' + value : value
+    const src = localLogos[key]
+    if (src && !failed) {
+      return <img src={src} alt="" className="brand-logo" loading="lazy" onError={() => setFailed(true)} />
+    }
+    return <span aria-hidden="true">{fallback}</span>
+  }
+
+  // External image URL
+  if (/^https?:\/\//.test(value)) {
+    if (failed) return <span aria-hidden="true">{fallback}</span>
+    return <img src={value} alt="" className="brand-logo" loading="lazy" onError={() => setFailed(true)} />
+  }
+
+  return <span aria-hidden="true">{value}</span>
+}
+
+// To enable the public registry: sign up at https://formspree.io, create a form,
+// and paste the endpoint URL below (it looks like 'https://formspree.io/f/xxxxxxxx').
+// A Google Apps Script Web App URL with doPost(e) returning JSON works too.
+// Leave empty ('') to hide the registry button entirely.
+const REGISTRY_ENDPOINT = 'https://formspree.io/f/xaqvkkdb'
+
+const escapeHtml = (s) =>
+  String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]))
+
+const generateUuid = () => {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID()
+  }
+  // RFC 4122 v4 fallback
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = (Math.random() * 16) | 0
+    const v = c === 'x' ? r : (r & 0x3) | 0x8
+    return v.toString(16)
+  })
+}
+
+const certKey = (recipientName, awardTitle) =>
+  `${recipientName.trim().toLowerCase()}|${awardTitle}`
+
+const getOrCreateCertId = (recipientName, awardTitle) => {
+  const map = JSON.parse(localStorage.getItem('certificateIds') || '{}')
+  const key = certKey(recipientName, awardTitle)
+  if (!map[key]) {
+    map[key] = generateUuid()
+    localStorage.setItem('certificateIds', JSON.stringify(map))
+  }
+  return map[key]
+}
+
+const buildSocialHtml = (githubId, linkedinId) => {
+  const items = []
+  const cleanGh = (githubId || '').trim().replace(/^@/, '').replace(/^https?:\/\/github\.com\//i, '')
+  const cleanLi = (linkedinId || '').trim().replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//i, '').replace(/\/$/, '')
+  if (cleanGh) items.push(`<span class="social-pill">GitHub · @${escapeHtml(cleanGh)}</span>`)
+  if (cleanLi) items.push(`<span class="social-pill">LinkedIn · /in/${escapeHtml(cleanLi)}</span>`)
+  return items.length ? `<div class="socials">${items.join('')}</div>` : ''
+}
+
+const buildCertificateHtml = (recipientName, awardTitle, dateStr, certId, githubId, linkedinId) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>${escapeHtml(awardTitle)} — Certificate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: linear-gradient(135deg, #1a0a2e 0%, #0f0628 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 30px; }
+  .toolbar { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 10; }
+  .toolbar button { padding: 12px 22px; background: linear-gradient(135deg, #FFD700, #FF6B35); border: none; border-radius: 8px; color: #1a0a2e; font-weight: 700; cursor: pointer; font-size: 14px; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3); }
+  .toolbar button:hover { transform: scale(1.05); }
+  .certificate { position: relative; width: 1000px; max-width: 100%; aspect-ratio: 1.414 / 1; background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 50%, #ffeec4 100%); border: 14px solid transparent; background-clip: padding-box; padding: 56px 72px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .certificate::before { content: ''; position: absolute; inset: -14px; border-radius: 4px; background: linear-gradient(135deg, #FFD700, #FF6B35, #D2691E, #FFD700); z-index: -1; }
+  .certificate::after { content: ''; position: absolute; inset: 14px; border: 2px solid rgba(255, 107, 53, 0.4); pointer-events: none; }
+  .om { font-size: 64px; color: #D2691E; line-height: 1; margin-bottom: 8px; }
+  .brand { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #8B4513; letter-spacing: 4px; text-transform: uppercase; }
+  .sanskrit { font-size: 18px; color: #D2691E; font-style: italic; margin: 6px 0 28px; }
+  .award { font-family: 'Playfair Display', serif; font-size: 20px; color: #5a3d12; font-style: italic; margin-bottom: 14px; }
+  .recipient { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: #8B4513; margin-bottom: 10px; border-bottom: 2px solid rgba(139, 69, 19, 0.3); padding: 0 24px 10px; }
+  .socials { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .social-pill { display: inline-block; padding: 5px 14px; background: rgba(139, 69, 19, 0.08); border: 1px solid rgba(139, 69, 19, 0.25); border-radius: 999px; color: #5a3d12; font-size: 13px; font-weight: 600; letter-spacing: 0.3px; }
+  .for-text { font-size: 17px; color: #5a3d12; margin-bottom: 12px; }
+  .veda-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #D2691E; margin-bottom: 22px; }
+  .description { font-size: 15px; color: #5a3d12; max-width: 720px; line-height: 1.6; margin-bottom: auto; }
+  .footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; width: 100%; margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(139, 69, 19, 0.3); }
+  .signature, .date { text-align: center; flex: 1; }
+  .signature-line { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: #8B4513; margin-bottom: 4px; }
+  .signature-name { font-size: 12px; color: #5a3d12; letter-spacing: 1px; text-transform: uppercase; }
+  .seal { width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle, #FFD700 0%, #FF6B35 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 36px; box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4); flex: 0 0 auto; }
+  .cert-id { position: absolute; bottom: 22px; right: 30px; font-family: 'Fira Code', 'Courier New', monospace; font-size: 10px; color: #8B4513; opacity: 0.7; letter-spacing: 0.5px; }
+  .cert-id strong { font-weight: 600; }
+  @media print { .toolbar { display: none; } body { background: white; padding: 0; } .certificate { box-shadow: none; } @page { size: A4 landscape; margin: 0; } }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+  <div class="certificate">
+    <div class="om">🕉</div>
+    <div class="brand">The Security Vedas</div>
+    <div class="sanskrit">परमं धाम सुरक्षायः</div>
+    <div class="award">This is to certify that</div>
+    <div class="recipient">${escapeHtml(recipientName)}</div>
+    ${buildSocialHtml(githubId, linkedinId)}
+    <div class="for-text">has successfully completed all chapters of</div>
+    <div class="veda-title">${escapeHtml(awardTitle)}</div>
+    <div class="description">demonstrating mastery of the sacred knowledge contained within, and earning recognition as a guardian of this domain of cybersecurity wisdom.</div>
+    <div class="footer">
+      <div class="signature">
+        <div class="signature-line">Aditya</div>
+        <div class="signature-name">th3-v3ng34nc3 · Curator</div>
+      </div>
+      <div class="seal">🛡</div>
+      <div class="date">
+        <div class="signature-line">${escapeHtml(dateStr)}</div>
+        <div class="signature-name">Date of Completion</div>
+      </div>
+    </div>
+    <div class="cert-id"><strong>Certificate ID:</strong> ${escapeHtml(certId)}</div>
+  </div>
+  <script>setTimeout(() => window.print(), 600);</script>
+</body>
+</html>`
+
 // Sanskrit slogans for each Veda
 const vedaSlogans = {
   veda1: {
@@ -138,7 +285,7 @@ function HomePage({ onNavigate }) {
               onClick={() => onNavigate(item.id)}
             >
               <div className={`card-icon veda-${vNum}`}>
-                {item.icon}
+                <Icon value={item.icon} />
               </div>
               <h3>{item.title}</h3>
               <p className="card-desc">{item.description}</p>
@@ -176,7 +323,7 @@ function VedaPage({ vedaId, onNavigate, onSelectChapter, completedChapters, onTo
         <button className="back-btn" onClick={() => onNavigate('home')}>
           <BackIcon /> Return to Sanctuary
         </button>
-        <h1>{veda.icon} {veda.title}</h1>
+        <h1><span className="veda-title-icon"><Icon value={veda.icon} /></span> {veda.title}</h1>
         {slogan.sanskrit && (
           <div className="veda-mantra">
             {slogan.sanskrit}
@@ -205,7 +352,15 @@ function VedaPage({ vedaId, onNavigate, onSelectChapter, completedChapters, onTo
 }
 
 // Certification Modal Component
-function CertificationModal({ progressPercent, completedCount, totalChapters, completedChapters, vedasData, onClose }) {
+function CertificationModal({ progressPercent, completedCount, totalChapters, completedChapters, vedasData, userName, setUserName, githubId, setGithubId, linkedinId, setLinkedinId, onDownload, onReset, onClose }) {
+  const [registryEmail, setRegistryEmail] = useState(() => localStorage.getItem('registryEmail') || '')
+  const [registryStatus, setRegistryStatus] = useState('idle') // idle | submitting | success | error
+  const [registryError, setRegistryError] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('registryEmail', registryEmail)
+  }, [registryEmail])
+
   const vedasList = Object.values(vedasData)
 
   const getVedaProgress = (vedaId) => {
@@ -223,6 +378,55 @@ function CertificationModal({ progressPercent, completedCount, totalChapters, co
   })
 
   const completedVedaCount = vedaCertificates.filter(v => v.isComplete).length
+  const earnedCerts = vedaCertificates.filter(v => v.isComplete)
+
+  const submitToRegistry = async () => {
+    const name = userName.trim()
+    if (!name) {
+      setRegistryError('Please enter your name first.')
+      setRegistryStatus('error')
+      return
+    }
+    if (earnedCerts.length === 0) {
+      setRegistryError('Earn at least one Veda certificate before registering.')
+      setRegistryStatus('error')
+      return
+    }
+    if (!REGISTRY_ENDPOINT) {
+      setRegistryError('Registry endpoint is not configured yet. See REGISTRY_ENDPOINT in App.jsx.')
+      setRegistryStatus('error')
+      return
+    }
+
+    setRegistryStatus('submitting')
+    setRegistryError('')
+
+    const payload = {
+      name,
+      email: registryEmail.trim() || null,
+      github: githubId.trim() || null,
+      linkedin: linkedinId.trim() || null,
+      submittedAt: new Date().toISOString(),
+      isGrandMaster: completedVedaCount === vedasList.length,
+      certificates: earnedCerts.map(v => ({
+        veda: v.title,
+        certificateId: getOrCreateCertId(name, v.title)
+      }))
+    }
+
+    try {
+      const res = await fetch(REGISTRY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      if (!res.ok) throw new Error(`Server returned ${res.status}`)
+      setRegistryStatus('success')
+    } catch (err) {
+      setRegistryError(err.message || 'Submission failed. Please try again.')
+      setRegistryStatus('error')
+    }
+  }
 
   return (
     <div className="certification-overlay" onClick={onClose}>
@@ -242,13 +446,93 @@ function CertificationModal({ progressPercent, completedCount, totalChapters, co
           <p className="cert-progress-text">{completedCount} of {totalChapters} Chapters Completed ({progressPercent}%)</p>
         </div>
 
+        <div className="cert-name-section">
+          <label htmlFor="cert-name-input" className="cert-name-label">
+            Recipient name <span className="cert-name-hint">(printed on every certificate)</span>
+          </label>
+          <input
+            id="cert-name-input"
+            type="text"
+            className="cert-name-input"
+            placeholder="Enter your full name"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            maxLength={80}
+          />
+
+          <div className="cert-id-row">
+            <div className="cert-id-col">
+              <label htmlFor="cert-github-input" className="cert-name-label">
+                GitHub <span className="cert-name-hint">(optional)</span>
+              </label>
+              <input
+                id="cert-github-input"
+                type="text"
+                className="cert-name-input"
+                placeholder="@username or profile URL"
+                value={githubId}
+                onChange={(e) => setGithubId(e.target.value)}
+                maxLength={120}
+              />
+            </div>
+            <div className="cert-id-col">
+              <label htmlFor="cert-linkedin-input" className="cert-name-label">
+                LinkedIn <span className="cert-name-hint">(optional)</span>
+              </label>
+              <input
+                id="cert-linkedin-input"
+                type="text"
+                className="cert-name-input"
+                placeholder="username or profile URL"
+                value={linkedinId}
+                onChange={(e) => setLinkedinId(e.target.value)}
+                maxLength={120}
+              />
+            </div>
+          </div>
+        </div>
+
+        {REGISTRY_ENDPOINT && (
+          <div className="cert-registry-section">
+            <h4>🌐 Public Registry <span className="cert-registry-optional">(optional)</span></h4>
+            <p className="cert-registry-desc">
+              Add your name and earned certificates to the public registry. Your record proves authenticity if anyone verifies your certificate ID.
+            </p>
+            <input
+              type="email"
+              className="cert-name-input cert-email-input"
+              placeholder="Email (optional, won't be shown publicly)"
+              value={registryEmail}
+              onChange={(e) => setRegistryEmail(e.target.value)}
+              maxLength={120}
+            />
+            <button
+              className="cert-registry-btn"
+              onClick={submitToRegistry}
+              disabled={registryStatus === 'submitting' || registryStatus === 'success'}
+            >
+              {registryStatus === 'submitting' && '⏳ Submitting…'}
+              {registryStatus === 'success' && '✓ Registered'}
+              {(registryStatus === 'idle' || registryStatus === 'error') && '📡 Register on Public Registry'}
+            </button>
+            {registryStatus === 'success' && (
+              <p className="cert-registry-msg cert-registry-success">
+                Your record has been submitted. Thank you for joining the registry!
+              </p>
+            )}
+            {registryStatus === 'error' && (
+              <p className="cert-registry-msg cert-registry-err">{registryError}</p>
+            )}
+          </div>
+        )}
+
         <div className="cert-vedas-section">
           <h3>🎓 Veda Certifications</h3>
           <p className="cert-vedas-subtitle">Complete all chapters in a Veda to unlock its certificate</p>
           <div className="cert-vedas-grid">
             {vedaCertificates.map(v => (
               <div key={v.id} className={`cert-veda-card ${v.isComplete ? 'eligible' : ''}`}>
-                <div className="cert-veda-icon">{v.icon}</div>
+                <div className="cert-veda-icon"><Icon value={v.icon} /></div>
                 <div className="cert-veda-info">
                   <h4>{v.title}</h4>
                   <div className="cert-veda-progress">
@@ -259,7 +543,7 @@ function CertificationModal({ progressPercent, completedCount, totalChapters, co
                   </div>
                 </div>
                 {v.isComplete ? (
-                  <button className="cert-veda-btn" onClick={() => alert(`Downloading ${v.title} Certificate!`)}>
+                  <button className="cert-veda-btn" onClick={() => onDownload(v.title)}>
                     📜 Get Certificate
                   </button>
                 ) : (
@@ -276,7 +560,7 @@ function CertificationModal({ progressPercent, completedCount, totalChapters, co
               <span className="cert-grand-icon">🏆</span>
               <h3>Grand Master of Security Vedas</h3>
               <p>You have completed all 6 Vedas! Your cybersecurity knowledge is supreme.</p>
-              <button className="cert-download-btn" onClick={() => alert('Downloading Grand Master Certificate!')}>
+              <button className="cert-download-btn" onClick={() => onDownload('Grand Master of Security Vedas')}>
                 🎖️ Download Grand Certificate
               </button>
             </div>
@@ -284,13 +568,22 @@ function CertificationModal({ progressPercent, completedCount, totalChapters, co
             <p className="cert-more">Complete {vedasList.length - completedVedaCount} more Veda{vedasList.length - completedVedaCount > 1 ? 's' : ''} for the Grand Master Certificate!</p>
           )}
         </div>
+
+        {completedCount > 0 && (
+          <div className="cert-reset">
+            <button className="cert-reset-btn" onClick={onReset}>
+              ↺ Reset Progress
+            </button>
+            <p className="cert-reset-hint">Clears all chapter completion. Your name and social handles are kept.</p>
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
 // Chapter Detail Page Component
-function ChapterPage({ chapter, vedaId, onNavigate, onSelectChapter }) {
+function ChapterPage({ chapter, vedaId, onNavigate, onSelectChapter, isCompleted, onToggleComplete }) {
   const veda = vedasData[vedaId]
 
   if (!chapter || !veda) {
@@ -326,11 +619,22 @@ function ChapterPage({ chapter, vedaId, onNavigate, onSelectChapter }) {
       </button>
 
       <div className="chapter-header">
-        <span className="chapter-veda-badge">{veda.icon} {veda.title}</span>
+        <span className="chapter-veda-badge"><Icon value={veda.icon} /> {veda.title}</span>
         <span className="chapter-section-badge">{sectionTitle}</span>
       </div>
 
       <h1 className="chapter-title">{chapter.title}</h1>
+
+      <div className="chapter-complete-row">
+        <button
+          className={`chapter-complete-btn ${isCompleted ? 'completed' : ''}`}
+          onClick={onToggleComplete}
+          aria-pressed={isCompleted}
+        >
+          <span className="chapter-complete-check">{isCompleted ? '✓' : '○'}</span>
+          {isCompleted ? 'Marked as Complete' : 'Mark as Complete'}
+        </button>
+      </div>
 
       <div className="chapter-content">
         {allContent[chapter.id] ? (
@@ -393,7 +697,7 @@ function SectionCard({ section, sectionIndex, vedaId, onSelectChapter, completed
     >
       <div className="section-header">
         <h3>
-          <span className="section-icon">{section.icon}</span>
+          <span className="section-icon"><Icon value={section.icon} /></span>
           {section.title}
         </h3>
         <span className="chevron">{expanded ? '✦' : '+'}</span>
@@ -529,7 +833,7 @@ function Sidebar({ currentPage, onNavigate, isOpen, onClose }) {
             }}
           >
             <span className={`nav-icon ${item.vedaNum ? `veda-${item.vedaNum}` : ''}`}>
-              {item.icon}
+              <Icon value={item.icon} />
             </span>
             {item.label}
           </div>
@@ -555,11 +859,21 @@ function App() {
     return saved ? JSON.parse(saved) : []
   })
 
+  const [userName, setUserName] = useState(() => localStorage.getItem('userName') || '')
+  const [githubId, setGithubId] = useState(() => localStorage.getItem('githubId') || '')
+  const [linkedinId, setLinkedinId] = useState(() => localStorage.getItem('linkedinId') || '')
+
+  useEffect(() => { localStorage.setItem('userName', userName) }, [userName])
+  useEffect(() => { localStorage.setItem('githubId', githubId) }, [githubId])
+  useEffect(() => { localStorage.setItem('linkedinId', linkedinId) }, [linkedinId])
+
   const chapters = useMemo(() => getAllChapters(), [])
 
   const totalChapters = chapters.length
   const completedCount = completedChapters.length
-  const progressPercent = Math.round((completedCount / totalChapters) * 100)
+  const progressPercent = totalChapters > 0
+    ? Math.round((completedCount / totalChapters) * 100)
+    : 0
 
   const toggleChapterComplete = (chapterId) => {
     setCompletedChapters(prev => {
@@ -567,15 +881,40 @@ function App() {
         ? prev.filter(id => id !== chapterId)
         : [...prev, chapterId]
       localStorage.setItem('completedChapters', JSON.stringify(newCompleted))
+      if (newCompleted.length === totalChapters) {
+        setTimeout(() => setShowCertification(true), 500)
+      }
       return newCompleted
     })
-
-    if (progressPercent === 99 || progressPercent === 100) {
-      setTimeout(() => setShowCertification(true), 500)
-    }
   }
 
   const isChapterCompleted = (chapterId) => completedChapters.includes(chapterId)
+
+  const resetProgress = () => {
+    if (!window.confirm('Reset all chapter completion progress? This cannot be undone. (Your name, GitHub, and LinkedIn details will be kept.)')) return
+    setCompletedChapters([])
+    localStorage.removeItem('completedChapters')
+    localStorage.removeItem('certificateIds')
+  }
+
+  const downloadCertificate = (awardTitle) => {
+    const name = userName.trim()
+    if (!name) {
+      alert('Please enter your name in the certificate panel first.')
+      return
+    }
+    const today = new Date().toLocaleDateString('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    })
+    const certId = getOrCreateCertId(name, awardTitle)
+    const win = window.open('', '_blank')
+    if (!win) {
+      alert('Please allow pop-ups for this site to download your certificate.')
+      return
+    }
+    win.document.write(buildCertificateHtml(name, awardTitle, today, certId, githubId, linkedinId))
+    win.document.close()
+  }
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -683,6 +1022,8 @@ function App() {
             vedaId={selectedVedaId}
             onNavigate={handleNavigate}
             onSelectChapter={handleSelectChapter}
+            isCompleted={isChapterCompleted(selectedChapter.id)}
+            onToggleComplete={() => toggleChapterComplete(selectedChapter.id)}
           />
         ) : currentPage === 'home' ? (
           <HomePage onNavigate={handleNavigate} />
@@ -721,6 +1062,14 @@ function App() {
           totalChapters={totalChapters}
           completedChapters={completedChapters}
           vedasData={vedasData}
+          userName={userName}
+          setUserName={setUserName}
+          githubId={githubId}
+          setGithubId={setGithubId}
+          linkedinId={linkedinId}
+          setLinkedinId={setLinkedinId}
+          onDownload={downloadCertificate}
+          onReset={resetProgress}
           onClose={() => setShowCertification(false)}
         />
       )}

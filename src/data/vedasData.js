@@ -1,8 +1,8 @@
 export const vedasData = {
   veda1: {
     id: "veda1",
-    title: "Cloud Security",
-    icon: "☁️",
+    title: "Veda 01: Cloud Security",
+    icon: "./logos/vedas/cloudsecVeda.png",
     sanskritName: "आकाश रक्षा",
     sanskritPronunciation: "Ākāśa Rakṣā",
     gradient: "linear-gradient(135deg, #22D3EE, #06B6D4)",
@@ -11,7 +11,7 @@ export const vedasData = {
       {
         id: "cloud-fundamentals",
         title: "Cloud Fundamentals",
-        icon: "📚",
+        icon: "./logos/cloudsecVeda/cloudFundamental.png",
         chapters: [
           { id: "v1c1", title: "Introduction to Cloud Computing", desc: "Fundamentals of cloud computing and security" },
           { id: "v1c2", title: "Cloud Service Models", desc: "IaaS, PaaS, and SaaS Explained" },
@@ -26,7 +26,7 @@ export const vedasData = {
       {
         id: "aws-security",
         title: "AWS Security",
-        icon: "🌐",
+        icon: "./logos/cloudsecVeda/awscloud.png",
         chapters: [
           { id: "v1c9", title: "AWS IAM Deep Dive", desc: "Identity and Access Management" },
           { id: "v1c10", title: "IAM Policies and Permissions", desc: "JSON policies, roles, boundaries" },
@@ -48,7 +48,7 @@ export const vedasData = {
       {
         id: "azure-security",
         title: "Azure Security",
-        icon: "🔷",
+        icon: "./logos/cloudsecVeda/azurecloud.png",
         chapters: [
           { id: "v1c24", title: "Azure Active Directory", desc: "Identity and access in Azure" },
           { id: "v1c25", title: "Azure RBAC", desc: "Role-based access control" },
@@ -70,7 +70,7 @@ export const vedasData = {
       {
         id: "gcp-security",
         title: "GCP Security",
-        icon: "🔶",
+        icon: "./logos/cloudsecVeda/gcpcloud.png",
         chapters: [
           { id: "v1c39", title: "GCP IAM Deep Dive", desc: "Identity and Access Management" },
           { id: "v1c40", title: "GCP Resource Hierarchy", desc: "Organization, folders, projects" },
@@ -93,8 +93,8 @@ export const vedasData = {
   },
   veda2: {
     id: "veda2",
-    title: "Compliance",
-    icon: "⚖️",
+    title: "Veda 02: Compliance",
+    icon: "./logos/vedas/complianceVeda.webp",
     sanskritName: "धर्म नियम",
     sanskritPronunciation: "Dharma Niyama",
     gradient: "linear-gradient(135deg, #34D399, #10B981)",
@@ -103,7 +103,7 @@ export const vedasData = {
       {
         id: "compliance-fundamentals",
         title: "Compliance Fundamentals",
-        icon: "📖",
+        icon: "./logos/complianceVeda/compliancefundamental.jpg",
         chapters: [
           { id: "v2c1", title: "Introduction to Security Compliance", desc: "Compliance basics and importance" },
           { id: "v2c2", title: "Compliance Frameworks Overview", desc: "Overview of major frameworks" },
@@ -115,7 +115,7 @@ export const vedasData = {
       {
         id: "cis-controls",
         title: "CIS Controls",
-        icon: "🛡️",
+        icon: "./logos/complianceVeda/cis.jpg",
         chapters: [
           { id: "v2c6", title: "CIS Controls Overview", desc: "CIS Critical Security Controls" },
           { id: "v2c7", title: "Inventory of Enterprise Assets", desc: "Asset management controls" },
@@ -130,7 +130,7 @@ export const vedasData = {
       {
         id: "iso-27001",
         title: "ISO 27001",
-        icon: "📜",
+        icon: "./logos/complianceVeda/iso_27001.png",
         chapters: [
           { id: "v2c14", title: "ISO 27001 Overview", desc: "ISMS introduction" },
           { id: "v2c15", title: "ISMS Implementation", desc: "Building an ISMS" },
@@ -145,7 +145,7 @@ export const vedasData = {
       {
         id: "soc-2",
         title: "SOC 2",
-        icon: "✓",
+        icon: "./logos/complianceVeda/soc2.png",
         chapters: [
           { id: "v2c22", title: "SOC 2 Overview", desc: "SOC 2 introduction" },
           { id: "v2c23", title: "Trust Service Criteria", desc: "TSC explained" },
@@ -173,7 +173,7 @@ export const vedasData = {
       {
         id: "ccpa",
         title: "CCPA/CPRA",
-        icon: "🇺🇸",
+        icon: "./logos/complianceVeda/ccpa.webp",
         chapters: [
           { id: "v2c36", title: "CCPA Overview", desc: "California Consumer Privacy Act" },
           { id: "v2c37", title: "Consumer Rights", desc: "CCPA rights" },
@@ -185,7 +185,7 @@ export const vedasData = {
       {
         id: "hitrust",
         title: "HITRUST",
-        icon: "🏥",
+        icon: "./logos/complianceVeda/hitrust.webp",
         chapters: [
           { id: "v2c41", title: "HITRUST Overview", desc: "Healthcare security" },
           { id: "v2c42", title: "r2R Validated Assessment", desc: "Assessment process" },
@@ -197,7 +197,7 @@ export const vedasData = {
       {
         id: "cmmc",
         title: "CMMC",
-        icon: "🪖",
+        icon: "./logos/complianceVeda/cmmc.jpg",
         chapters: [
           { id: "v2c46", title: "CMMC Overview", desc: "Cybersecurity Maturity Model" },
           { id: "v2c47", title: "Level 1-5 Requirements", desc: "Maturity levels" },
@@ -209,7 +209,7 @@ export const vedasData = {
       {
         id: "pci-dss",
         title: "PCI DSS",
-        icon: "💳",
+        icon: "./logos/complianceVeda/PCI-DSS.png",
         chapters: [
           { id: "v2c51", title: "PCI DSS Overview", desc: "Payment card security" },
           { id: "v2c52", title: "12 Requirements", desc: "Detailed requirements" },
@@ -222,7 +222,7 @@ export const vedasData = {
       {
         id: "hipaa",
         title: "HIPAA",
-        icon: "⚕️",
+        icon: "./logos/complianceVeda/HIPAA.png",
         chapters: [
           { id: "v2c57", title: "HIPAA Overview", desc: "Health insurance portability" },
           { id: "v2c58", title: "PHI Protection", desc: "Protected health information" },
@@ -234,7 +234,7 @@ export const vedasData = {
       {
         id: "nist",
         title: "NIST",
-        icon: "📐",
+        icon: "./logos/complianceVeda/nist.png",
         chapters: [
           { id: "v2c62", title: "NIST CSF Overview", desc: "Cybersecurity Framework" },
           { id: "v2c63", title: "Framework Core", desc: "Core functions" },
@@ -247,8 +247,8 @@ export const vedasData = {
   },
   veda3: {
     id: "veda3",
-    title: "AppSec",
-    icon: "🛡️",
+    title: "Veda 03: AppSec",
+    icon: "./logos/vedas/appsecVeda.webp",
     sanskritName: "आयुध रक्षा",
     sanskritPronunciation: "Āyudha Rakṣā",
     gradient: "linear-gradient(135deg, #FB7185, #F43F5E)",
@@ -257,7 +257,7 @@ export const vedasData = {
       {
         id: "secure-development",
         title: "Secure Development",
-        icon: "💻",
+        icon: "./logos/appsec/secure_development.png",
         chapters: [
           { id: "v3c1", title: "SDLC Security", desc: "Security in development lifecycle" },
           { id: "v3c2", title: "Threat Modeling", desc: "STRIDE and attack trees" },
@@ -272,7 +272,7 @@ export const vedasData = {
       {
         id: "owasp-top-10",
         title: "OWASP Top 10",
-        icon: "🔝",
+        icon: "./logos/appsec/owasp_logo.png",
         chapters: [
           { id: "v3c9", title: "A01:2021 Broken Access Control", desc: "Access control vulnerabilities" },
           { id: "v3c10", title: "A02:2021 Cryptographic Failures", desc: "Crypto and data exposure" },
@@ -289,7 +289,7 @@ export const vedasData = {
       {
         id: "additional-vulnerabilities",
         title: "Additional Vulnerabilities",
-        icon: "⚠️",
+        icon: "./logos/appsec/additional_vulnerabilities.jpg",
         chapters: [
           { id: "v3c19", title: "IDOR", desc: "Insecure Direct Object Reference" },
           { id: "v3c20", title: "XXE", desc: "XML External Entity" },
@@ -306,7 +306,7 @@ export const vedasData = {
       {
         id: "testing-tools",
         title: "Testing & Tools",
-        icon: "🔧",
+        icon: "./logos/appsec/Testing-Tools.jpg",
         chapters: [
           { id: "v3c29", title: "Burp Suite", desc: "Web security testing" },
           { id: "v3c30", title: "OWASP ZAP", desc: "OWASP scanning tool" },
@@ -326,8 +326,8 @@ export const vedasData = {
   },
   veda4: {
     id: "veda4",
-    title: "DevSecOps",
-    icon: "🔧",
+    title: "Veda 04: DevSecOps",
+    icon: "./logos/vedas/devsecopsVeda.png",
     sanskritName: "यंत्र सुरक्षा",
     sanskritPronunciation: "Yantra Surakṣā",
     gradient: "linear-gradient(135deg, #FBBF24, #F59E0B)",
@@ -336,7 +336,7 @@ export const vedasData = {
       {
         id: "devsecops-fundamentals",
         title: "DevSecOps Fundamentals",
-        icon: "🔰",
+        icon: "./logos/devsecopsVeda/devsecops.png",
         chapters: [
           { id: "v4c1", title: "DevSecOps Introduction", desc: "DevSecOps overview" },
           { id: "v4c2", title: "Shift-Left Security", desc: "Moving security left" },
@@ -351,7 +351,7 @@ export const vedasData = {
       {
         id: "tooling",
         title: "Tooling",
-        icon: "🛠️",
+        icon: "./logos/devsecopsVeda/tooling.png",
         chapters: [
           { id: "v4c9", title: "SAST Tools", desc: "Static analysis tools" },
           { id: "v4c10", title: "DAST Tools", desc: "Dynamic analysis tools" },
@@ -368,7 +368,7 @@ export const vedasData = {
       {
         id: "implementation",
         title: "Implementation",
-        icon: "🚀",
+        icon: "./logos/devsecopsVeda/implementation.png",
         chapters: [
           { id: "v4c19", title: "Building Secure Pipelines", desc: "Pipeline architecture" },
           { id: "v4c20", title: "Integrating Security in GitOps", desc: "GitOps security" },
@@ -388,8 +388,8 @@ export const vedasData = {
   },
   veda5: {
     id: "veda5",
-    title: "Kubernetes & Containers",
-    icon: "🌀",
+    title: "Veda 05: Kubernetes & Containers",
+    icon: "./logos/vedas/KubernetessecVeda.jpg",
     sanskritName: "घट रक्षा",
     sanskritPronunciation: "Ghaṭa Rakṣā",
     gradient: "linear-gradient(135deg, #A78BFA, #8B5CF6)",
@@ -398,7 +398,7 @@ export const vedasData = {
       {
         id: "container-fundamentals",
         title: "Container Fundamentals",
-        icon: "📦",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
         chapters: [
           { id: "v5c1", title: "Container Security Overview", desc: "Container security basics" },
           { id: "v5c2", title: "Docker Security Best Practices", desc: "Docker hardening" },
@@ -411,7 +411,7 @@ export const vedasData = {
       {
         id: "kubernetes-architecture",
         title: "Kubernetes Architecture",
-        icon: "🏗️",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
         chapters: [
           { id: "v5c7", title: "K8s Security Architecture", desc: "Kubernetes security design" },
           { id: "v5c8", title: "API Server Security", desc: "API server hardening" },
@@ -462,8 +462,8 @@ export const vedasData = {
   },
   veda6: {
     id: "veda6",
-    title: "Network Security",
-    icon: "🌐",
+    title: "Veda 06: Network Security",
+    icon: "./logos/vedas/networksecVeda.jpg",
     gradient: "linear-gradient(135deg, #60A5FA, #3B82F6)",
     description: "Network fundamentals, perimeter security, monitoring, and advanced network protection strategies.",
     sections: [
@@ -485,7 +485,7 @@ export const vedasData = {
       {
         id: "perimeter-security",
         title: "Perimeter Security",
-        icon: "🏰",
+        icon: "./logos/networkSecVeda/perimeterSec.webp",
         chapters: [
           { id: "v6c9", title: "Firewall Architecture", desc: "Firewall design" },
           { id: "v6c10", title: "IDS/IPS", desc: "Intrusion detection" },
@@ -500,7 +500,7 @@ export const vedasData = {
       {
         id: "network-monitoring",
         title: "Network Monitoring",
-        icon: "📊",
+        icon: "./logos/networkSecVeda/network-monitoring.png",
         chapters: [
           { id: "v6c17", title: "SIEM", desc: "Security information" },
           { id: "v6c18", title: "Network Segmentation", desc: "Segment design" },
@@ -517,7 +517,7 @@ export const vedasData = {
       {
         id: "advanced-topics",
         title: "Advanced Topics",
-        icon: "🎯",
+        icon: "./logos/networkSecVeda/networksecAdvanceTopic.jpg",
         chapters: [
           { id: "v6c27", title: "Cloud Network Security", desc: "VPC and cloud networking" },
           { id: "v6c28", title: "Hybrid Cloud Security", desc: "Hybrid connectivity" },
